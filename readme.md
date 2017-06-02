@@ -1,0 +1,3 @@
+Sample function used to test [faas](https://github.com/alexellis/faas) & [faas-cli](https://github.com/alexellis/faas-cli) from [get-faas.com](http://docs.get-faas.com/)
+
+The function accepts a UK postcode and returns the sunrise / sunset / daylight hours for that place using a combination of endpoints offered by [postcodes.io](https://postcodes.io) and [sunrise-sunset.org](https://sunrise-sunset.org/api)
