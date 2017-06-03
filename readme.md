@@ -1,6 +1,6 @@
 # postcodedaylight
 
-Sample function used to evaluate [faas](https://github.com/alexellis/faas) from [get-faas.com](http://docs.get-faas.com/).  The function accepts a UK postcode and returns the daylight hours for that place using a combination of endpoints offered by [postcodes.io](https://postcodes.io) and [sunrise-sunset.org](https://sunrise-sunset.org/api)
+Sample function used to evaluate [faas](https://github.com/alexellis/faas) from [get-faas.com](http://docs.get-faas.com/).  The function accepts a UK postcode and returns the daylight hours for that place using a combination of endpoints offered by [postcodes.io](https://postcodes.io) and [sunrise-sunset.org](https://sunrise-sunset.org/api).  [sunrise-sunset.org](https://sunrise-sunset.org/api) do ask that usage is kept at 'reasonable request volumes' and that attribution to them be shown; please bear this in mind if using downstream.
 
 You can execute the function like this:
 
@@ -8,9 +8,13 @@ You can execute the function like this:
 
 (or use the [FaaS UI](http://localhost:8080/ui/) to pass the postcode as text)
 
+The response for a valid UK postcode should look like this:
+
+`Duration of daylight today at SW1A1AA : 16 hours, 23 minutes & 59 seconds.`
+
 ## Installation
 
-You can either install `postcodeDaylight` via your FaaS compose file or you can add it via the UI.
+You can either install `postcodedaylight` via your FaaS compose file or you can add it via the UI.
 
 ### Compose file
 
@@ -33,6 +37,8 @@ Add this to your FaaS `docker-compose.yml`
 ```
 and then redeploy the FaaS func stack
 `docker stack deploy -c docker-compose.yml func`
+
+n.b. Remember to change the image to `gee0/postcodedaylight:latest-armhf` if running on a Raspberry Pi.
 
 ### UI
 
