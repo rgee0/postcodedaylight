@@ -1,0 +1,14 @@
+FROM alexellis2/go-armhf:1.7.4
+MAINTAINER docker@technologee.co.uk
+ENTRYPOINT []
+
+WORKDIR /go/src/github.com/rgee0/postcodedaylight
+COPY . /go/src/github.com/rgee0/postcodedaylight
+
+RUN go install
+ADD https://github.com/alexellis/faas/releases/download/0.5.6-alpha/fwatchdog-armhf /usr/bin/fwatchdog
+RUN chmod +x /usr/bin/fwatchdog
+
+ENV fprocess "/go/bin/postcodedaylight"
+
+CMD [ "/usr/bin/fwatchdog"]

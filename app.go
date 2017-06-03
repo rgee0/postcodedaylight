@@ -69,6 +69,6 @@ func main() {
 		os.Exit(0)
 	}
 
-	fmt.Printf("The duration of daylight at %s was %s.\n", strings.ToUpper(postcode), splitTime(suntimes.TimeOf.DayLength))
+	fmt.Printf("Duration of daylight today at %s : %s.\n", strings.ToUpper(postcode), splitTime(suntimes.TimeOf.DayLength))
 
 }
