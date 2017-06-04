@@ -5,33 +5,32 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"strconv"
 	"strings"
+	"time"
 )
 
-func evalTime(inNum string, unit string) string {
-
-	i, _ := strconv.Atoi(inNum)
-	var outVal string
-
-	if i == 1 {
-		outVal = inNum + " " + unit
-	} else {
-		outVal = inNum + " " + unit + "s"
-	}
-	return outVal
-}
-
-func splitTime(intime string) string {
-	parts := strings.Split(intime, ":")
-	return evalTime(parts[0], "hour") + ", " + evalTime(parts[1], "minute") + " & " + evalTime(parts[2], "second")
-}
-
-func stripSpaces(input string) string {
+func stripSpaces(inStr string) string {
 	//split on a new line as stdin appends \n
-	parts := strings.Split(input, "\n")
+	parts := strings.Split(inStr, "\n")
 	//return te part befoew the first newline with all spaces removed
 	return strings.Replace(parts[0], " ", "", -1)
+}
+
+func daylightRemaining(downtime string) string {
+	//remove the sub-second values
+	t := time.Now().UTC().Round(time.Second)
+
+	//convert string representation to a time
+	downTime := makeDate(downtime)
+	//initialise with default value to save elsing
+	outVal := "Sunset has passed"
+
+	//if there is remaining daylight
+	if t.Before(downTime) {
+		//over-ride the default with remaining duration
+		outVal = downTime.Sub(t).String() + " until sunset"
+	}
+	return outVal
 }
 
 func main() {
@@ -68,7 +67,7 @@ func main() {
 		fmt.Printf("Sun times for the entered postcode were not found.\n")
 		os.Exit(0)
 	}
-
-	fmt.Printf("Duration of daylight today at %s : %s.\n", strings.ToUpper(postcode), splitTime(suntimes.TimeOf.DayLength))
+	//Everything seems to be in order so output some results
+	fmt.Printf("Duration of daylight today at %s : %s (%s).\n", strings.ToUpper(postcode), daylength(suntimes.TimeOf.Sunrise, suntimes.TimeOf.Sunset), daylightRemaining(suntimes.TimeOf.Sunset))
 
 }

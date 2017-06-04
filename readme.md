@@ -10,7 +10,7 @@ You can execute the function like this:
 
 The response for a valid UK postcode should look like this:
 
-`Duration of daylight today at SW1A1AA : 16 hours, 23 minutes & 59 seconds.`
+`Duration of daylight today at SW1A1AA : 16h25m34s (4h28m46s until sunset).`
 
 ## Installation
 
