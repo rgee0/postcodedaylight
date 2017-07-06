@@ -26,6 +26,7 @@ services:
         networks:
             - functions
         environment:
+            fprocess: "/go/bin/postcodedaylight"
             no_proxy: "gateway"
             https_proxy: $https_proxy
 
