@@ -38,7 +38,7 @@ Add this to your FaaS `docker-compose.yml`
 and then redeploy the FaaS func stack
 `docker stack deploy -c docker-compose.yml func`
 
-n.b. Remember to change the image to `gee0/postcodedaylight:latest-armhf` if running on a Raspberry Pi.
+n.b. Remember to change the image to `rgee0/postcodedaylight:latest-armhf` if running on a Raspberry Pi.
 
 ### UI
 
