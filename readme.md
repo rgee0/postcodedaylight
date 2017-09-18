@@ -1,3 +1,4 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/rgee0/postcodedaylight)](https://goreportcard.com/report/github.com/rgee0/postcodedaylight)
 # postcodedaylight
 
 Sample function used to evaluate [faas](https://github.com/alexellis/faas) from [get-faas.com](http://docs.get-faas.com/).  The function accepts a UK postcode and returns the daylight hours for that place using a combination of endpoints offered by [postcodes.io](https://postcodes.io) and [sunrise-sunset.org](https://sunrise-sunset.org/api).  [sunrise-sunset.org](https://sunrise-sunset.org/api) do ask that usage is kept at 'reasonable request volumes' and that attribution to them be shown; please bear this in mind if using downstream.
